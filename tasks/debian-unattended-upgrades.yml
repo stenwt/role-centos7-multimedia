@@ -1,0 +1,21 @@
+---
+
+  - name: "Install unattended-upgrades"
+    apt: 
+      name: unattended-upgrades
+      state: installed
+
+  - name: Configure auto-upgrade
+    lineinfile: 
+      dest: /etc/apt/apt.conf.d/20auto-upgrades
+      line: 'Unattended-Upgrade::MinimalSteps "true";'
+
+  - name: Configure auto-upgrade
+    lineinfile: 
+      dest: /etc/apt/apt.conf.d/20auto-upgrades
+      line: 'APT::Periodic::Update-Package-Lists "1";'
+
+  - name: Configure auto-upgrade
+    lineinfile: 
+      dest: /etc/apt/apt.conf.d/20auto-upgrades
+      line: 'APT::Periodic::Unattended-Upgrade "1";'

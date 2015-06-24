@@ -1,0 +1,14 @@
+--- 
+  - name: Install Nux Dextop repo
+    yum: name=http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-1.el7.nux.noarch.rpm state=installed gpgcheck=no
+
+  - name: Install non-free packages
+    yum: name={{ item }} state=installed
+    with_items:
+      - libdvdcss 
+      - gstreamer-plugins-ugly 
+      - gstreamer-plugins-bad-nonfree 
+      - gstreamer1-plugins-bad-freeworld
+
+  - name: Install Gnash instead of flash - it should be a little safer
+    yum: name=gnaseh state=installed

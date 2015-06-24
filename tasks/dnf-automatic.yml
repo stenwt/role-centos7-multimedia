@@ -1,0 +1,13 @@
+---
+
+  - name: Install dnf-automatic
+    yum:
+      name: dnf-automatic
+      state: installed
+      update_cache: yes
+
+  - name: Enable dnf-automatic
+    service:
+      name: dnf-automatic.timer
+      state: started
+      enabled: true

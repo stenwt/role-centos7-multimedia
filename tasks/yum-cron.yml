@@ -1,0 +1,19 @@
+---
+
+  - name: Install yum-cron
+    yum:
+      name: yum-cron
+      state: installed
+      update_cache: yes
+
+  - name: Configure yum-cron to apply updates
+    lineinfile:
+      dest: /etc/yum/yum-cron.conf
+      regexp: '^apply_updates'
+      line: 'apply_updates = yes'
+
+  - name: Enable yum-cron
+    service:
+      name: yum-cron
+      state: started
+      enabled: true
